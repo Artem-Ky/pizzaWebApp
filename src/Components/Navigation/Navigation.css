@@ -67,9 +67,6 @@
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg>');
 }
 
-/* .nav__dropListOpen {
-
-} */
 
 .nav__cart {
     margin-left: auto;
@@ -121,7 +118,7 @@
 .menuNavDropList {
     position: absolute;
     left: -70px;
-    top: 35px;
+    top: 100%;
     background-color: #ffffff;
     padding: 40px 10px;
     cursor: default;
@@ -159,10 +156,22 @@
     .nav__container {
         max-width: 1004px;
     }
+    .menuNavDropList {
+        padding: 30px 10px;
+    }
 }
 @media (max-width: 1024px) {
     .nav__container {
         width: 100%;
+    }
+
+    .menuNavDropList {
+        left: -40px;
+        padding: 20px 10px;
+    }
+    .menuNavDropList .item {
+        font-size: 16px;
+        margin: 0 15px;
     }
 
     .nav__item{
