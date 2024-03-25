@@ -28,31 +28,6 @@
     text-decoration: none;
 }
 
-.blog {
-    display: inline-block;
-    vertical-align: top;
-    text-align: left;
-    margin-right: 50px;
-}
-
-.blog__container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.blog__title {
-    display: block;
-    width: 100%;
-    font-size: 18px;
-    font-family: RobotoSlab,serif;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.blog__link-mb {
-    margin-bottom: 11px;
-}
-
 .flex-1 {
     flex: 1;
 }
@@ -145,6 +120,7 @@
 
 .blog__links {
     display: inline-block;
+    word-wrap: break-word;
 }
 @media (max-width: 1600px) {
     .container {

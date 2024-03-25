@@ -22,8 +22,20 @@ const NavigationItem: React.FC<navDivProps> = ({title, className, popUpList, sta
 
 
   return (
-    <li onClick={toggleStatus} onMouseEnter={setStatus} onMouseLeave={closeStatus} className={`nav__item ${className}`}>{title}{status === navBarStatus && popUpList}</li>
-  )
+    <li
+      onClick={toggleStatus}
+      onMouseEnter={setStatus}
+      onMouseLeave={closeStatus}
+      className={`nav__item ${className} ${
+        status === navBarStatus
+          ? "nav__dropList-active"
+          : "nav__dropList-inactive"
+      }`}
+    >
+      {title}
+      {status === navBarStatus && popUpList}
+    </li>
+  );
 }
 
 export default NavigationItem

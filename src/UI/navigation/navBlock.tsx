@@ -1,6 +1,6 @@
 import LinkHeader from '../HeadeOrFooterLink/HeaderOrFooterLink';
 import { FooterBlogProps } from '../../types';
-
+import './navBlock.css'
 
 
 
