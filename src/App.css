@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "SFUI";
+    font-style: normal;
+    font-weight: 400;
+    src: local("San Francisco UI"),
+         url("/src/assets/fonts/SFUIText-Regular.ttf") format("ttf")
+}
+@font-face {
+   font-family: "Roboto";
+   font-style: normal;
+   font-weight: 400;
+   src: local("Roboto"),
+        url("/src/assets/fonts/Roboto-Regular.ttf") format("ttf")
+}
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Roboto"),
+         url("/src/assets/fonts/Roboto-Bold.ttf") format("ttf")
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+body {
+    overflow-x: hidden;
+}
+
+#root {
+    height: 100%;
+}
+
+.App {
+    height: 100%;
+    background-color: #000000;
+}
+

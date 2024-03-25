@@ -1,0 +1,181 @@
+.footer {
+    padding: 50px 0 30px;
+    font-family: SF-UI-Text,sans-serif;
+    color: #aeaeae;
+    text-align: justify;
+
+}
+.footer::after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+}
+
+.background-wrapper {
+    background-color: #f7f7f7;
+}
+
+.container {
+    max-width: 1580px;
+    margin: 0 auto;
+}
+
+.footer__nav {
+    display: flex;
+}
+.footer__nav-link {
+    color: #aeaeae;
+    text-decoration: none;
+}
+
+.blog {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    margin-right: 50px;
+}
+
+.blog__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog__title {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    font-family: RobotoSlab,serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.blog__link-mb {
+    margin-bottom: 11px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+.flex-2 {
+    flex: 2;
+}
+.flex-4 {
+    flex: 4;
+}
+
+.footer__social {
+    display: inline-block;
+}
+.footer__social-apps {
+    max-width: 280px;
+    margin-bottom: auto;
+}
+.footer__social-title {
+    font-family: RobotoSlab,serif;
+    font-size: 1.25em;
+    margin-bottom: 18x;
+    font-weight: 700;
+}
+.container-row {
+    display: inline-block;
+}
+.footer__social-link {
+ display: inline-block;
+ width: 120px;
+ height: 45px;
+ background: no-repeat 50%/contain;
+}
+.footer__social-items {
+    display: flex;
+    justify-content: space-between;
+}
+.footer__social-nets {
+    display: inline-block;
+    text-align: right;
+    vertical-align: top;
+    margin-top: 60px;
+}
+.footer__social-nets a {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 16px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.last {
+    margin-right: 0;
+}
+
+.footer__icon-telegram {
+    background-image: url('../../assets/icons/footer/telegram.svg');
+}
+.footer__icon-telegram:hover {
+    background-image: url('../../assets/icons/footer/telegram-red.svg');
+}
+.footer__icon-youtube {
+    background-image: url('../../assets/icons/footer/youtube.svg');
+}
+.footer__icon-youtube:hover {
+    background-image: url('../../assets/icons/footer/youtube-red.svg');
+}
+.footer__icon-vk {
+    background-image: url('../../assets/icons/footer/vk.svg');
+}
+.footer__icon-vk:hover {
+    background-image: url('../../assets/icons/footer/vk-red.svg');
+}
+.footer__social-item_ios {
+    background-image: url('../../assets/icons/footer/appstore.svg');
+}
+.footer__social-item_ios:hover {
+    background-image: url('../../assets/icons/footer/ios.svg');
+}
+.footer__social-item_android {
+    background-image: url('../../assets/icons/footer/googleplay.svg');
+}
+.footer__social-item_android:hover {
+    background-image: url('../../assets/icons/footer/android.svg');
+}
+
+
+
+
+.blog__links {
+    display: inline-block;
+}
+@media (max-width: 1600px) {
+    .container {
+        max-width: 1330px;
+    }
+}
+@media (max-width: 1350px) {
+    .container {
+        max-width: 1004px;
+    }
+
+}
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+    .blog {
+        margin-right: 0;
+    }
+    .blog__title {
+        font-size: 16px;
+    }
+    .footer {
+        padding: 20px 20px 15px;
+        display: block;
+        width: calc(100% - 40px);
+    }
+}
+@media (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+}
+
