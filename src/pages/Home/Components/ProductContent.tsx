@@ -1,18 +1,17 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../stores/store'
-import { getMenuList } from '../../../stores/slices/productSlice';
-import { useEffect } from 'react';
 import ProductCategoryBlock from './ProductCategoryBlock';
+import { useEffect } from "react";
+import { getMenuList } from '../../../stores/slices/productSlice';
 import { useTypeDispatch } from '../../../customHooks/useTypeDispatch';
 import './Product.css'
 
 const ProductBlog = () => {
-const dispatch = useTypeDispatch();
+  const dispatch = useTypeDispatch();
 const {items, status} = useSelector((state: RootState) => state.product)
-
 useEffect(() => {
-    dispatch(getMenuList());
-  }, []);
+  dispatch(getMenuList());
+}, []);
 
 
   if(status == 'isLoading')
@@ -34,7 +33,6 @@ useEffect(() => {
   return (
     <div className="product__container">
           {items.map((item) => {
-      console.log(item.productListDTOs)
       return <ProductCategoryBlock key={item.id} id={item.id} categoryName={item.type} cartList={item.productListDTOs}/>
     })}
     </div>

@@ -7,14 +7,13 @@ import { RootState } from '../stores/store'
 
 
 const navMapMenuLink = () => {
-    const {items }= useSelector((state: RootState) => state.product)
+    const {navigationLinks }= useSelector((state: RootState) => state.global)
 
-    const menuLinks = items.map(item => ({
+    const menuLinks = navigationLinks.map(item => ({
       url: `#category-${item.id}`,
       title: item.type,
       linkClass: "item__link-footer"
     }));
-    
     const middleIndex = Math.ceil(menuLinks.length / 2);
     
         return (

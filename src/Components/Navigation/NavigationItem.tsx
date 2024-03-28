@@ -2,12 +2,12 @@ import { useDispatch } from "react-redux";
 import { NavBarStatus, navDivProps } from "../../types";
 import { useSelector } from "react-redux";
 import { RootState } from '../../stores/store'
-import { setIsNavPopUpMenuLinksOpen } from "../../stores/slices/productSlice";
+import { setIsNavPopUpMenuLinksOpen } from "../../stores/slices/globalSlice";
 
 
 const NavigationItem: React.FC<navDivProps> = ({title, className, popUpList, status}) => {
   const dispatch = useDispatch();
-  const {navBarStatus} = useSelector((state: RootState) => state.product)
+  const {navBarStatus} = useSelector((state: RootState) => state.global)
 
   const setStatus = () => {
     dispatch(setIsNavPopUpMenuLinksOpen(status))

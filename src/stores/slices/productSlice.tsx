@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MenuFetchData, ProductState, LoadStatus, NavBarStatus } from "../../types"
+import { MenuFetchData, ProductState, LoadStatus } from "../../types"
 import { getFetch } from "../../functions/axiosInstance";
 import {  AxiosError  } from "axios";
 
@@ -7,8 +7,7 @@ import {  AxiosError  } from "axios";
 
 const initialState: ProductState = {
     items: [],
-    status: LoadStatus.default,
-    navBarStatus: NavBarStatus.isClose
+    status: LoadStatus.default
 };
 
   export const productSlice = createSlice({
@@ -17,9 +16,6 @@ const initialState: ProductState = {
     reducers: {
       setItems: (state, action: PayloadAction<MenuFetchData[]>) => {
         state.items = action.payload;
-      },
-      setIsNavPopUpMenuLinksOpen: (state, action: PayloadAction<NavBarStatus>) => {
-        state.navBarStatus = action.payload;
       }
     },
     extraReducers: (builder) => {
@@ -63,6 +59,6 @@ const initialState: ProductState = {
 
 
 
-export const { setItems, setIsNavPopUpMenuLinksOpen } = productSlice.actions;
+export const { setItems } = productSlice.actions;
 
 export default productSlice.reducer;

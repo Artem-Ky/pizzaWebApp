@@ -17,6 +17,20 @@ export interface MenuFetchData {
     type: string;
     productListDTOs: Array<cartItem>
 }
+export interface AnchorLinks {
+    id: number,
+    type: string
+}
+
+export interface CartState {
+    amount: number;
+    totalPrice: number;
+}
+export interface globalSliceProps {
+    navigationLinks: AnchorLinks[];
+    status: LoadStatus;
+    navBarStatus: NavBarStatus;
+}
 
 export enum LoadStatus {
     default = "default",
@@ -35,7 +49,6 @@ export enum NavBarStatus {
 export interface ProductState {
     items: MenuFetchData[];
     status: LoadStatus; 
-    navBarStatus: NavBarStatus
 }
 
 export interface CartItemProps {

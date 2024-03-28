@@ -73,8 +73,12 @@
     margin-right: 0;
     position: relative;
 }
+.nav__cart a {
+    color: #000000;
+    text-decoration: none;
+}
 
-.nav__cart::before {
+.nav__cart a::before {
     content: '';
     height: 40px;
     width: 40px;
@@ -101,10 +105,10 @@
     font-size: 16px;
 }
 
-.nav__cart:hover {
+.nav__cart a:hover {
     color: #FF2400;
 }
-.nav__cart:hover:before {
+.nav__cart a:hover:before {
     background-image: url('/src/assets/icons/navbar/cartRed.png');
 }
 
@@ -184,7 +188,7 @@
     .nav__cart {
         margin-left: auto;
     }
-    .nav__cart::before {
+    .nav__cart a::before {
         top: -35%;
         left: -80%;
     }

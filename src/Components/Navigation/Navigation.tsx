@@ -6,6 +6,7 @@ import { RootState } from '../../stores/store'
 import NavBlock from '../../UI/navigation/navBlock'
 import navMapMenuLink from '../../functions/navMapMenuLink'
 import { NavBarStatus } from '../../types'
+import { Link } from 'react-router-dom'
 
 
 //#region special
@@ -98,9 +99,9 @@ const Navigation = () => {
   return (
     <nav className="nav">
       <div className="nav__container nav__flex">
-        <a href="">
+        <Link to="/">
           <img className="nav__logo" src={mainLogo} alt="Логотип  Марк пицца" />
-        </a>
+        </Link>
         <ul>
           <NavigationItem
             title="Меню"
@@ -141,8 +142,8 @@ const Navigation = () => {
             />
             }
           />
-          <li className="nav__item"><a className='nav__link' href='#'>Вакансии</a></li>
-          <li className='nav__item nav__cart'>Корзина {amount > 0 && <span className='nav__cart-amount'>{amount}</span>}</li>
+          <li className="nav__item"><Link className='nav__link' to='#'>Вакансии</Link></li>
+          <li className='nav__item nav__cart'><Link to='cart'>Корзина {amount > 0 && <span className='nav__cart-amount'>{amount}</span>}</Link></li>
         </ul>
       </div>
     </nav>
