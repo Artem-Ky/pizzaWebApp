@@ -7,6 +7,7 @@ import NavBlock from '../../UI/navigation/navBlock'
 import navMapMenuLink from '../../functions/navMapMenuLink'
 import { NavBarStatus } from '../../types'
 import { Link } from 'react-router-dom'
+import getListAnchorNavLinks from "../../functions/useGetAnchorNavLinks";
 
 
 //#region special
@@ -91,6 +92,7 @@ const moreSecondColumn = [
 
 
 const Navigation = () => {
+  getListAnchorNavLinks();
 
   const { amount } = useSelector((state: RootState) => state.cart);
 
