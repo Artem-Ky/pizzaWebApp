@@ -1,18 +1,18 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { AnchorLinks, LoadStatus, globalSliceProps, NavBarStatus } from "../../types";
+import { AnchorLinks, LoadStatus, navigationSliceProps, NavBarStatus } from "../../types";
 import { getFetch } from "../../functions/axiosInstance";
 import {  AxiosError  } from "axios";
 
 
 
-const initialState: globalSliceProps = {
+const initialState: navigationSliceProps = {
     navigationLinks: [],
     status: LoadStatus.default,
     navBarStatus: NavBarStatus.isClose
 }
 
-export const globalSlice = createSlice({
-    name: "global",
+export const navigationSlice = createSlice({
+    name: "navigation",
     initialState,
     reducers: {
         setLinks: (state, action: PayloadAction<AnchorLinks[]>) => {
@@ -35,7 +35,7 @@ export const globalSlice = createSlice({
 })
 
 export const getAnchorNavLinks = createAsyncThunk(
-    'global/getLinkList',
+    'navigation/getLinkList',
     async (_, { rejectWithValue }) => {
         try {
             const response = await getFetch.get('api/ProductType');
@@ -47,5 +47,5 @@ export const getAnchorNavLinks = createAsyncThunk(
     }
 )
 
-export const {setLinks, setIsNavPopUpMenuLinksOpen} = globalSlice.actions;
-export default globalSlice.reducer;
+export const {setLinks, setIsNavPopUpMenuLinksOpen} = navigationSlice.actions;
+export default navigationSlice.reducer;

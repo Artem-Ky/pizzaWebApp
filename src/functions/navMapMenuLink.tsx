@@ -7,7 +7,7 @@ import { RootState } from '../stores/store'
 
 
 const navMapMenuLink = () => {
-    const {navigationLinks }= useSelector((state: RootState) => state.global)
+    const {navigationLinks }= useSelector((state: RootState) => state.navigation)
 
     const menuLinks = navigationLinks.map(item => ({
       url: `#category-${item.id}`,

@@ -8,7 +8,7 @@ import navMapMenuLink from '../../functions/navMapMenuLink'
 import { NavBarStatus } from '../../types'
 import { Link } from 'react-router-dom'
 import getListAnchorNavLinks from "../../functions/useGetAnchorNavLinks";
-
+import useScrollToAnchor from "../../customHooks/useScrollToAnchor";
 
 //#region special
 const special = [
@@ -92,8 +92,8 @@ const moreSecondColumn = [
 
 
 const Navigation = () => {
-  getListAnchorNavLinks();
-
+  getListAnchorNavLinks(); //ссылки с бека из меню
+  useScrollToAnchor(); //для перезода по якорям
   const { amount } = useSelector((state: RootState) => state.cart);
 
   const {menuLinkFirstColumn, menuLinkSecondColumn} = navMapMenuLink();

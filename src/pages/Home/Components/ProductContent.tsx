@@ -4,7 +4,7 @@ import ProductCategoryBlock from './ProductCategoryBlock';
 import { useEffect } from "react";
 import { getMenuList } from '../../../stores/slices/productSlice';
 import { useTypeDispatch } from '../../../customHooks/useTypeDispatch';
-import useScrollToAnchor from "../../../customHooks/useScrollToAnchor";
+
 import './Product.css'
 
 const ProductBlog = () => {
@@ -13,7 +13,7 @@ const {items, status} = useSelector((state: RootState) => state.product)
 useEffect(() => {
   dispatch(getMenuList());
 }, []);
-useScrollToAnchor();
+
 
   if(status == 'isLoading')
   {

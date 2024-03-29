@@ -38,6 +38,7 @@
 
 // export default useScrollToAnchor;
 
+
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -45,7 +46,7 @@ const useScrollToAnchor = () => {
   const location = useLocation();
 
   useEffect(() => {
-    let frameId:number; 
+    let frameId: number;
 
     const attemptScrollToAnchor = () => {
       const anchor = location.hash.replace('#', '');
@@ -57,16 +58,23 @@ const useScrollToAnchor = () => {
       }
     };
 
+    const scrollToTopAfterLoad = () => {
+      if (document.readyState === "complete") {
+        window.scrollTo(0, 0);
+      } else {
+        frameId = window.requestAnimationFrame(scrollToTopAfterLoad);
+      }
+    };
+
     if (location.hash) {
       frameId = window.requestAnimationFrame(attemptScrollToAnchor);
     } else {
-      window.scrollTo(0, 0);
+      scrollToTopAfterLoad();
     }
-
 
     return () => {
       if (frameId) {
-        window.cancelAnimationFrame(frameId); 
+        window.cancelAnimationFrame(frameId);
       }
     };
   }, [location.hash]);

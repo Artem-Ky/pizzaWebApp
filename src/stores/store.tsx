@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReduce from './slices/cartSlice'
 import productReduce from './slices/productSlice'
-import globalReduce from './slices/globalSlice'
+import navigationReduce from './slices/navigateSlice'
 
 
 
@@ -11,7 +11,7 @@ export const store = configureStore (
         reducer: {
             cart: cartReduce,
             product: productReduce,
-            global: globalReduce
+            navigation: navigationReduce
         }
     }
 )

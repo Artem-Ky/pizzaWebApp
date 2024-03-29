@@ -26,7 +26,7 @@ export interface CartState {
     amount: number;
     totalPrice: number;
 }
-export interface globalSliceProps {
+export interface navigationSliceProps {
     navigationLinks: AnchorLinks[];
     status: LoadStatus;
     navBarStatus: NavBarStatus;

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useTypeDispatch } from "../customHooks/useTypeDispatch";
-import { getAnchorNavLinks } from "../stores/slices/globalSlice";
+import { getAnchorNavLinks } from "../stores/slices/navigateSlice";
 
 
 
