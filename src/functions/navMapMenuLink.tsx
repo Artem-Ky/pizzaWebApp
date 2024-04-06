@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from '../stores/store'
+import { IAnchorLinks } from "../types";
 
 
 
@@ -9,7 +10,7 @@ import { RootState } from '../stores/store'
 const navMapMenuLink = () => {
     const {navigationLinks }= useSelector((state: RootState) => state.navigation)
 
-    const menuLinks = navigationLinks.map(item => ({
+    const menuLinks = navigationLinks.map((item: IAnchorLinks) => ({
       url: `#category-${item.id}`,
       title: item.type,
       linkClass: "item__link-footer"

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useTypeDispatch } from "../customHooks/useTypeDispatch";
 import { getAnchorNavLinks } from "../stores/slices/navigateSlice";
+import { useAppDispatch } from "../customHooks/redux/redux";
 
 
 
 
 const getListAnchorNavLinks = () => {
-  const dispatch = useTypeDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getAnchorNavLinks());

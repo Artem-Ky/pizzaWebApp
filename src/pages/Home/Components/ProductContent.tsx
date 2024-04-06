@@ -3,12 +3,12 @@ import { RootState } from '../../../stores/store'
 import ProductCategoryBlock from './ProductCategoryBlock';
 import { useEffect } from "react";
 import { getMenuList } from '../../../stores/slices/productSlice';
-import { useTypeDispatch } from '../../../customHooks/useTypeDispatch';
-
 import './Product.css'
+import { useAppDispatch } from '../../../customHooks/redux/redux';
+import { IMenuFetchData } from '../../../types';
 
-const ProductBlog = () => {
-  const dispatch = useTypeDispatch();
+const ProductContent = () => {
+  const dispatch = useAppDispatch();
 const {items, status} = useSelector((state: RootState) => state.product)
 useEffect(() => {
   dispatch(getMenuList());
@@ -33,7 +33,7 @@ useEffect(() => {
 
   return (
     <div className="product__container">
-          {items.map((item) => {
+          {items.map((item:IMenuFetchData) => {
       return <ProductCategoryBlock key={item.id} id={item.id} categoryName={item.type} cartList={item.productListDTOs}/>
     })}
     </div>
@@ -41,4 +41,4 @@ useEffect(() => {
   );
 }
 
-export default ProductBlog
+export default ProductContent

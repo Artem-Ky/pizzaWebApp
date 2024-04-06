@@ -4,6 +4,7 @@ import RegisterForm from "../pages/Register/RegisterForm";
 import NotFound from "../pages/NotFound/NotFound";
 import UsersSharedLayout from "../pages/Shared/UsersSharedLayout";
 import LoginForm from "../pages/LoginForm/LoginForm";
+import BannerType from "../pages/Admin/SubPages/bannerType/BannerType";
 
 
 const RouterPages = () => {
@@ -14,6 +15,10 @@ const RouterPages = () => {
                   <Route path="register" element={<RegisterForm/>}/>
                   <Route path="login" element={<LoginForm/>}/>
                   <Route path="profile" element={<LoginForm/>}/>
+                  <Route path="*" element={<NotFound/>}/>
+              </Route>
+              <Route path="/admin" element={<UsersSharedLayout/>}>
+                  <Route index element={<BannerType/>}/>
                   <Route path="*" element={<NotFound/>}/>
               </Route>
         </Routes>

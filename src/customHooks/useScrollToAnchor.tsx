@@ -1,44 +1,3 @@
-// import { useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
-
-// const useScrollToAnchor = () => {
-//   const location = useLocation();
-
-//   useEffect(() => {
-//     const attemptScrollToAnchor = (anchor:string) => {
-//       const element = document.getElementById(anchor);
-//       if (element) {
-//         element.scrollIntoView({ behavior: 'auto' });
-//         return true;
-//       }
-//       return false;
-//     };
-
-//     // если в адресе есть якорь то получаем его
-//     if (location.hash) {
-//       const anchorId = location.hash.replace('#', '');
-      
-//       //пытаемся сделать скрол по якорю если не получается ждем по 100мс и пробуем снова
-//       if (!attemptScrollToAnchor(anchorId)) {
-//         const intervalId = setInterval(() => {
-//           if (attemptScrollToAnchor(anchorId)) {
-//             clearInterval(intervalId);
-//           }
-//         }, 100); 
-
-//         //без этого иногда багует
-//         return () => clearInterval(intervalId);
-//       }
-//     } else {
-//       window.scrollTo(0, 0);
-//     }
-    
-//   }, [location]);
-// };
-
-// export default useScrollToAnchor;
-
-
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -58,18 +17,10 @@ const useScrollToAnchor = () => {
       }
     };
 
-    const scrollToTopAfterLoad = () => {
-      if (document.readyState === "complete") {
-        window.scrollTo(0, 0);
-      } else {
-        frameId = window.requestAnimationFrame(scrollToTopAfterLoad);
-      }
-    };
-
     if (location.hash) {
       frameId = window.requestAnimationFrame(attemptScrollToAnchor);
     } else {
-      scrollToTopAfterLoad();
+      window.scrollTo(0, 0);
     }
 
     return () => {
@@ -77,7 +28,7 @@ const useScrollToAnchor = () => {
         window.cancelAnimationFrame(frameId);
       }
     };
-  }, [location.hash]);
+  }, [location]);
 };
 
 export default useScrollToAnchor;

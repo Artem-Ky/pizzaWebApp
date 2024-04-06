@@ -1,35 +1,51 @@
-export interface cartItem{
-    id: number;
-    name: string;
-    cost: number;
-    weight: number;
-    about: string;
-    descr: string;
-    photo: string;
-    productTypeId: number;
-    bannerTypeId: number;
-    sizeProductId: number;
-    isAvailable: boolean;
+export interface IProduct{
+    id: number,
+    name: string,
+    cost: number,
+    weight: number,
+    about: string,
+    descr: string,
+    photo: string,
+    productTypeId: number,
+    bannerTypeId: number,
+    sizeProductId: number,
+    isAvailable: boolean
   }
 
-export interface MenuFetchData {
-    id: number;
-    type: string;
-    productListDTOs: Array<cartItem>
+export interface IMenuFetchData {
+    id: number,
+    type: string,
+    productListDTOs: Array<IProduct>
 }
-export interface AnchorLinks {
+export interface IAnchorLinks {
     id: number,
     type: string
 }
 
-export interface CartState {
-    amount: number;
-    totalPrice: number;
+export interface ICartState {
+    amount: number,
+    totalPrice: number
 }
-export interface navigationSliceProps {
-    navigationLinks: AnchorLinks[];
-    status: LoadStatus;
-    navBarStatus: NavBarStatus;
+export interface INavigationSlice {
+    navigationLinks: IAnchorLinks[],
+    status: LoadStatus,
+    navBarStatus: NavBarStatus
+}
+
+export interface IUser {
+    phone: string,
+    password: string,
+    token: string,
+    status: LoadStatus
+}
+
+export interface IBannerTypes {
+    status: LoadStatus,
+    bannerTypes: IBannerType[]
+}
+export interface IBannerType {
+    id: number,
+    type: string
 }
 
 export enum LoadStatus {
@@ -46,38 +62,44 @@ export enum NavBarStatus {
     isMoreOpen = "isMoreOpen"
 }
 
-export interface ProductState {
-    items: MenuFetchData[];
+export interface IProductState {
+    items: IMenuFetchData[];
     status: LoadStatus; 
 }
 
-export interface CartItemProps {
+export interface IProductCart {
     img: string,
     title: string,
     descr: string,
-    cost: number,
+    cost: number
 }
-export interface ProductCategoryBlockProps {
+export interface IProductCategoryBlock {
     categoryName: string,
-    cartList: Array<cartItem>,
+    cartList: Array<IProduct>,
     id: number
 }
 
-export interface navDivProps {
-    title: React.ReactNode;
-    className: string;
-    popUpList: React.ReactNode;
-    status: NavBarStatus;
+export interface INavDiv {
+    title: React.ReactNode,
+    className: string,
+    popUpList: React.ReactNode,
+    status: NavBarStatus
 }
-export interface HeaderLinkProps {
-    url:string;
-    title:string;
-    linkClass:string;
+export interface IHeaderLink {
+    url:string,
+    title:string,
+    linkClass:string
 }
-export interface FooterBlogProps {
+export interface IHeaderLinkWithId {
+    id:number,
+    url:string,
+    title:string,
+    linkClass:string
+}
+export interface IFooterBlog {
     title:string,
     sizeClass: string,
-    firstLinks: HeaderLinkProps[],
-    secondLinks: HeaderLinkProps[]
+    firstLinks: IHeaderLinkWithId[],
+    secondLinks: IHeaderLinkWithId[]
   }
   

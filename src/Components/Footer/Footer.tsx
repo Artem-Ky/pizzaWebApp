@@ -1,6 +1,5 @@
 import FooterBlog from "../../UI/navigation/navBlock"
 import './Footer.css'
-import { HeaderLinkProps } from '../../types';
 import navMapMenuLink from "../../functions/navMapMenuLink";
 
 
@@ -9,11 +8,13 @@ import navMapMenuLink from "../../functions/navMapMenuLink";
 //#region special
 const special = [
   {
+    id: 1,
     url: "#",
     title: "Общие",
     linkClass: "item__link-footer",
   },
   {
+    id: 2,
     url: "#",
     title: "МаркФабрика Плюс",
     linkClass: "item__link-footer",
@@ -23,31 +24,37 @@ const special = [
 //#region moreFirstColumn
 const moreFirstColumn = [
   {
+    id: 1,
     url: "#",
     title: "Зона доставки",
     linkClass: "item__link-footer",
   },
   {
+    id: 2,
     url: "#",
     title: "Контакты",
     linkClass: "item__link-footer",
   },
   {
+    id: 3,
     url: "#",
     title: "Франшиза",
     linkClass: "item__link-footer",
   },
   {
+    id: 4,
     url: "#",
     title: "График работы",
     linkClass: "item__link-footer",
   },
   {
+    id: 5,
     url: "#",
     title: "О компании",
     linkClass: "item__link-footer",
   },
   {
+    id: 6,
     url: "#",
     title: "Ищем поставщиков",
     linkClass: "item__link-footer",
@@ -57,26 +64,31 @@ const moreFirstColumn = [
 //#region moreSecondColumn
 const moreSecondColumn = [
   {
+    id: 1,
     url: "#",
     title: "Инвестиции",
     linkClass: "item__link-footer",
   },
   {
+    id: 2,
     url: "#",
     title: "Калорийность и состав",
     linkClass: "item__link-footer",
   },
   {
+    id: 3,
     url: "#",
     title: "Помощь",
     linkClass: "item__link-footer",
   },
   {
+    id: 4,
     url: "#",
     title: "Оплата для юридических лиц",
     linkClass: "item__link-footer",
   },
   {
+    id: 5,
     url: "#",
     title: "Подписка МаркФабрика Плюс",
     linkClass: "item__link-footer",

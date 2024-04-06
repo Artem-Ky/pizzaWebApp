@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MenuFetchData, ProductState, LoadStatus } from "../../types"
+import { IMenuFetchData, IProductState, LoadStatus } from "../../types"
 import { getFetch } from "../../functions/axiosInstance";
 import {  AxiosError  } from "axios";
 
 
 
-const initialState: ProductState = {
+const initialState: IProductState = {
     items: [],
     status: LoadStatus.default
 };
@@ -14,7 +14,7 @@ const initialState: ProductState = {
     name: 'product',
     initialState,
     reducers: {
-      setItems: (state, action: PayloadAction<MenuFetchData[]>) => {
+      setItems: (state, action: PayloadAction<IMenuFetchData[]>) => {
         state.items = action.payload;
       }
     },
@@ -40,7 +40,7 @@ const initialState: ProductState = {
     'product/getMenuList',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await getFetch.get('api/DefaultProducts/MenuList');
+            const response = await getFetch('api/DefaultProducts/MenuList');
             return response.data;
           } catch (error) {
             const axiosError = error as AxiosError; 

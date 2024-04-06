@@ -1,8 +1,11 @@
-import { Form, Input, Button, Checkbox, Select, Flex } from 'antd';
+import { Form, Input, Button, Checkbox  } from 'antd';
 import style from './registerForm.module.css'
 import { Link } from 'react-router-dom';
-
+import InputMask, { Props as InputMaskProps } from 'react-input-mask';
+import { useState } from 'react';
 const RegisterForm = () => {
+ // const MaskedInput: React.FC<InputMaskProps> = (props) => <InputMask {...props} />;
+  const [phone, setPhone] = useState('');
     const formItemLayout = {
         labelCol: {
           xs: {
@@ -44,39 +47,24 @@ const RegisterForm = () => {
         }}
         scrollToFirstError
       >
-        <Form.Item
-          name="email"
-          label="Электронная почта"
-          rules={[
-            {
-              type: "email",
-              message: "Почта должна быть формата example@mail.ru",
-            },
-            {
-              required: true,
-              message: "Пожалуйста, введите адрес электронной почты",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="phone"
-          label="Номер телефона"
-          rules={[
-            {
-              required: true,
-              message: "Пожалуйста, введите номер телефона",
-            },
-          ]}
-        >
-          <Input
-            addonBefore={+7}
-            style={{
-              width: "100%",
-            }}
-          />
-        </Form.Item>
+          <Form.Item
+            name="phone"
+            label="Номер телефона"
+            rules={[
+              {
+                required: true,
+                message: "Пожалуйста, введите номер телефона",
+              }
+            ]}
+          >
+            <InputMask
+             mask="8 (999) 999-99-99"
+              value={phone} // Использование состояния для value
+              onChange={(e) => setPhone(e.target.value)} // Обновление состояния при изменении
+            >
+              {(inputProps) => <Input {...inputProps} type="tel" />}
+            </InputMask>
+          </Form.Item>
 
         <Form.Item
           name="password"
@@ -116,21 +104,6 @@ const RegisterForm = () => {
           <Input.Password />
         </Form.Item>
         <Form.Item
-          name="gender"
-          label="Пол"
-          rules={[
-            {
-              required: true,
-              message: "Пожалуйста, выберите пол",
-            },
-          ]}
-        >
-          <Select placeholder="select your gender">
-            <Select.Option value="male">М</Select.Option>
-            <Select.Option value="female">Ж</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
           name="agreement"
           valuePropName="checked"
           rules={[
@@ -149,8 +122,9 @@ const RegisterForm = () => {
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
-            Register
+            Зарегистрироваться
           </Button>
+          <p>уже есть аккаунт? <Link to='../login'>Войти</Link></p>
         </Form.Item>
       </Form>
     </main>

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { HeaderLinkProps } from '../../types'
+import { IHeaderLink } from '../../types'
 import './HeaderOrFooterLink.css'
 
 
 
-const HeaderOrFooterLink: React.FC<HeaderLinkProps> = ({url, title, linkClass}) => {
+const HeaderOrFooterLink: React.FC<IHeaderLink> = ({url, title, linkClass}) => {
   return (
     <li className={`item`}>
       <Link

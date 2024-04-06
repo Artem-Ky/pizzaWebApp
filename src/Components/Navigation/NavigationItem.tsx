@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
-import { NavBarStatus, navDivProps } from "../../types";
+import { INavDiv, NavBarStatus } from "../../types";
 import { useSelector } from "react-redux";
 import { RootState } from '../../stores/store'
 import { setIsNavPopUpMenuLinksOpen } from "../../stores/slices/navigateSlice";
 
 
-const NavigationItem: React.FC<navDivProps> = ({title, className, popUpList, status}) => {
+const NavigationItem: React.FC<INavDiv> = ({title, className, popUpList, status}) => {
   const dispatch = useDispatch();
   const {navBarStatus} = useSelector((state: RootState) => state.navigation)
 

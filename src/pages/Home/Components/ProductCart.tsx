@@ -1,9 +1,9 @@
 import { useInView } from "react-intersection-observer"
-import { CartItemProps } from "../../../types";
+import { IProductCart } from "../../../types";
 
 
 
-const ProductCart: React.FC<CartItemProps> = ({img, title, descr, cost}) => {
+const ProductCart: React.FC<IProductCart> = ({img, title, descr, cost}) => {
 
     const {ref, inView} = useInView({
         threshold: 0,
