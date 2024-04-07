@@ -9,8 +9,9 @@ import { IAnchorLinks } from "../types";
 
 const navMapMenuLink = () => {
     const {navigationLinks }= useSelector((state: RootState) => state.navigation)
-
+    console.log(navigationLinks)
     const menuLinks = navigationLinks.map((item: IAnchorLinks) => ({
+      id: item.id,
       url: `#category-${item.id}`,
       title: item.type,
       linkClass: "item__link-footer"

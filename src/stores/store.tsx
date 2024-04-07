@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import cartReduce from './slices/cartSlice'
+import cartReduce from './slices/cartSlice/cartSlice'
 import productReduce from './slices/productSlice'
 import navigationReduce from './slices/navigateSlice'
 import userReduce from './slices/userSlice'
-import adminReduce from './slices/bannerTypeSlice'
+import { CRUD_API } from "./RTKQuery/CRUD";
 
 
 
@@ -14,12 +14,13 @@ const rootReducer = combineReducers ({
     product: productReduce,
     navigation: navigationReduce,
     user: userReduce,
-    admin: adminReduce
+    [CRUD_API.reducerPath]: CRUD_API.reducer
 })
 
 export const setupStore = () => {
     return configureStore({
-        reducer: rootReducer
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(CRUD_API.middleware),
     })
 }
 

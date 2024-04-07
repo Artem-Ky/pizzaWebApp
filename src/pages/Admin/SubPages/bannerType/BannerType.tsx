@@ -1,34 +1,30 @@
 import { useState } from 'react';
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../stores/store";
-import { useEffect } from "react";
-import {
-  deleteBannerTypes,
-  getBannerTypes,
-  putBannerTypes,
-  setBannerTypes
-} from "../../../../stores/slices/ActionCreators";
-import { useAppDispatch } from '../../../../customHooks/redux/redux';
+import {CRUD_API} from '../../../../stores/RTKQuery/CRUD'
 import { IBannerType } from '../../../../types';
 
 const BannerType = () => {
-  const dispatch = useAppDispatch();
-  const { bannerTypes } = useSelector((state: RootState) => state.admin);
+
   const [newBannerType, setNewBannerType] = useState('');
   const [editBannerTypes, setEditBannerTypes] = useState<{ [key: number]: string }>({});
 
-  useEffect(() => {
-    dispatch(getBannerTypes());
-  }, [dispatch]);
 
-  const handleCreate = () => {
-    dispatch(setBannerTypes({ id: 0, type: newBannerType }));
+
+const {data: bannerTypes} = CRUD_API.useFetchAllBannerTypesQuery()
+const [createBannerType, {} ] = CRUD_API.useCreateBannerTypeMutation();
+const [updateBannerType, {}] = CRUD_API.useUpdateBannerTypeMutation();
+const [deleteBannerType, {}] = CRUD_API.useDeleteBannerTypeMutation();
+
+
+  const handleCreate = async () => {
+    await createBannerType({id: 0, type: newBannerType} as IBannerType)
     setNewBannerType(''); 
   };
-
-  const handleUpdate = (id: number) => {
+  const handleUpdate = async (id: number) => {
     const type = editBannerTypes[id];
-    dispatch(putBannerTypes({ id, type }));
+    await updateBannerType({id, type} as IBannerType)
+  };
+  const handleDelete= async (id: number) => {
+    await deleteBannerType(id)
   };
 
   return (
@@ -43,7 +39,7 @@ const BannerType = () => {
         Создать новый тип баннера
       </button>
 
-      {bannerTypes.map((item:IBannerType) => (
+      {bannerTypes?.map((item:IBannerType) => (
         <div key={item.id}>
           <p>ID: {item.id}</p>
           <input
@@ -52,7 +48,7 @@ const BannerType = () => {
             type="text"
           />
           <button onClick={() => handleUpdate(item.id)}>изменить</button>
-          <button onClick={() => dispatch(deleteBannerTypes(item.id))}>удалить</button>
+          <button onClick={() => handleDelete(item.id)}>удалить</button>
         </div>
       ))}
     </>

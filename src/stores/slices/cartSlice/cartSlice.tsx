@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ICartState } from "../../types"
+import { ICartState } from "../../../types"
 
 
 

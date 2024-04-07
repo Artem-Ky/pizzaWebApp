@@ -110,6 +110,8 @@ const Navigation = () => {
   const { amount } = useSelector((state: RootState) => state.cart);
 
   const {menuLinkFirstColumn, menuLinkSecondColumn} = navMapMenuLink();
+  console.log(menuLinkFirstColumn);
+  console.log(menuLinkSecondColumn);
 
   return (
     <nav className="nav">
