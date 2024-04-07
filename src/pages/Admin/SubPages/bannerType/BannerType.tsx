@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {CRUD_API} from '../../../../stores/RTKQuery/CRUD'
+import {AdminPanel} from '../../../../stores/RTKQuery/adminPanel'
 import { IBannerType } from '../../../../types';
 
 const BannerType = () => {
@@ -9,10 +9,10 @@ const BannerType = () => {
 
 
 
-const {data: bannerTypes} = CRUD_API.useFetchAllBannerTypesQuery()
-const [createBannerType, {} ] = CRUD_API.useCreateBannerTypeMutation();
-const [updateBannerType, {}] = CRUD_API.useUpdateBannerTypeMutation();
-const [deleteBannerType, {}] = CRUD_API.useDeleteBannerTypeMutation();
+const {data: bannerTypes} = AdminPanel.useFetchAllBannerTypesQuery();
+const [createBannerType, {} ] = AdminPanel.useCreateBannerTypeMutation();
+const [updateBannerType, {}] = AdminPanel.useUpdateBannerTypeMutation();
+const [deleteBannerType, {}] = AdminPanel.useDeleteBannerTypeMutation();
 
 
   const handleCreate = async () => {

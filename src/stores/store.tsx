@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import cartReduce from './slices/cartSlice/cartSlice'
-import productReduce from './slices/productSlice'
-import navigationReduce from './slices/navigateSlice'
-import userReduce from './slices/userSlice'
-import { CRUD_API } from "./RTKQuery/CRUD";
+import userReduce from './slices/userSlice/userSlice'
+import { ProductSlice } from "./RTKQuery/product";
+import { navigateSlice } from "./RTKQuery/navigate";
+import navigationReduce from "./slices/navigateSlice/navigateSlice";
+import { AdminPanel } from "./RTKQuery/adminPanel";
+import { userSlice } from "./RTKQuery/users";
 
 
 
@@ -11,16 +13,19 @@ import { CRUD_API } from "./RTKQuery/CRUD";
 
 const rootReducer = combineReducers ({
     cart: cartReduce,
-    product: productReduce,
-    navigation: navigationReduce,
     user: userReduce,
-    [CRUD_API.reducerPath]: CRUD_API.reducer
+    navigation: navigationReduce,
+    [AdminPanel.reducerPath]: AdminPanel.reducer,
+    [ProductSlice.reducerPath]: ProductSlice.reducer,
+    [navigateSlice.reducerPath]: navigateSlice.reducer,
+    [userSlice.reducerPath]: userSlice.reducer
 })
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(CRUD_API.middleware),
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(AdminPanel.middleware).concat(ProductSlice.middleware)
+        .concat(navigateSlice.middleware).concat(userSlice.middleware),
     })
 }
 

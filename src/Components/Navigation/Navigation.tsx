@@ -5,9 +5,8 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../stores/store'
 import NavBlock from '../../UI/navigation/navBlock'
 import navMapMenuLink from '../../functions/navMapMenuLink'
-import { NavBarStatus } from '../../types'
+import { IHeaderLinkWithId, NavBarStatus } from '../../types'
 import { Link } from 'react-router-dom'
-import getListAnchorNavLinks from "../../functions/useGetAnchorNavLinks";
 import useScrollToAnchor from "../../customHooks/useScrollToAnchor";
 
 
@@ -105,13 +104,10 @@ const moreSecondColumn = [
 
 
 const Navigation = () => {
-  getListAnchorNavLinks(); //ссылки с бека из меню
   useScrollToAnchor(); //для перезода по якорям
   const { amount } = useSelector((state: RootState) => state.cart);
 
   const {menuLinkFirstColumn, menuLinkSecondColumn} = navMapMenuLink();
-  console.log(menuLinkFirstColumn);
-  console.log(menuLinkSecondColumn);
 
   return (
     <nav className="nav">
@@ -128,8 +124,9 @@ const Navigation = () => {
               <NavBlock
                 title=""
                 sizeClass="menuNavDropList"
-                firstLinks={menuLinkFirstColumn}
-                secondLinks={menuLinkSecondColumn}
+                firstLinks={menuLinkFirstColumn as IHeaderLinkWithId[]}
+                secondLinks={menuLinkSecondColumn as IHeaderLinkWithId[]}
+                
               />
             }
           />

@@ -10,7 +10,7 @@ const NavBlock: React.FC<IFooterBlog> = ({title,secondLinks, firstLinks, sizeCla
       {title && <div className="blog__title">{title}</div>}
       <div className="blog__container">
         <ul className={`blog__links`}>
-          {firstLinks.map((firstLinks) => (
+          {firstLinks?.map((firstLinks) => (
             <Link
             key={`first-${firstLinks.id}`}
               url={firstLinks.url}
@@ -19,9 +19,9 @@ const NavBlock: React.FC<IFooterBlog> = ({title,secondLinks, firstLinks, sizeCla
             />
           ))}
         </ul>
-        {secondLinks.length > 0 && (
+        {secondLinks?.length > 0 && (
           <ul className={`blog__links`}>
-            {secondLinks.map((secondLinks) => (
+            {secondLinks?.map((secondLinks) => (
               <Link
                 key={`second-${secondLinks.id}`}
                 url={secondLinks.url}

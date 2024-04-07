@@ -1,6 +1,7 @@
 import FooterBlog from "../../UI/navigation/navBlock"
 import './Footer.css'
 import navMapMenuLink from "../../functions/navMapMenuLink";
+import { IHeaderLinkWithId } from "../../types";
 
 
 
@@ -106,7 +107,7 @@ const Footer = () => {
     <div className="background-wrapper">
     <footer className="container footer">
         <nav className="footer__nav">
-            <FooterBlog sizeClass="flex-2"  title='Меню' firstLinks={menuLinkFirstColumn} secondLinks={menuLinkSecondColumn}/>
+            <FooterBlog sizeClass="flex-2"  title='Меню' firstLinks={menuLinkFirstColumn as IHeaderLinkWithId[]} secondLinks={menuLinkSecondColumn as IHeaderLinkWithId[]}/>
             <FooterBlog sizeClass="flex-1"  title='Акции' firstLinks={special} secondLinks={[]}/>
             <FooterBlog sizeClass="flex-4"  title='Еще' firstLinks={moreFirstColumn} secondLinks={moreSecondColumn}/>
             <a className="footer__nav-link blog__title flex-2" href='#' target="_blank" rel="nofollow noopener noreferrer">Вакансии</a>

@@ -4,8 +4,8 @@ import { IBannerType } from "../../types";
 
 
 
-export const CRUD_API = createApi({
-    reducerPath: 'CRUD_API',
+export const AdminPanel = createApi({
+    reducerPath: 'AdminPanel',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://localhost:7136/api/',
         prepareHeaders: (headers) => {

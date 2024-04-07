@@ -2,20 +2,26 @@ import { Form, Input, Button } from 'antd';
 import style from './LoginForm.module.css'
 import { Link } from 'react-router-dom';
 import InputMask, { Props as InputMaskProps } from 'react-input-mask';
-import { useDispatch } from 'react-redux';
-import { loginUser } from '../../stores/slices/userSlice';
+import { userSlice } from '../../stores/RTKQuery/users';
+import { SetUser } from '../../stores/slices/userSlice/userSlice';
+import { IUser } from '../../types';
+import { useAppDispatch } from '../../customHooks/redux/redux';
 const LoginForm = () => {
 
-  const dispatch = useDispatch();
+  const [login, {} ] = userSlice.useLoginUserMutation();
+  const dispatch = useAppDispatch();
 
 
-
- const onFinish = (values: any) => {
-
-  const { phoneNumber, password } = values;
-  const phone = phoneNumber.replace(/\D/g, '');
-  console.log (phone, password);
-  dispatch(loginUser({ phone, password }));
+ const onFinish = async (values: any) => {
+  try {
+    const { phoneNumber, password } = values;
+    const phone = phoneNumber.replace(/\D/g, '');
+    console.log (phone, password);
+    const userResult = await login({phone, password, remember: true}).unwrap()
+    dispatch(SetUser(userResult));
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 

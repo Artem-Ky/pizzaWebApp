@@ -27,32 +27,24 @@ export interface ICartState {
     totalPrice: number
 }
 export interface INavigationSlice {
-    navigationLinks: IAnchorLinks[],
-    status: LoadStatus,
     navBarStatus: NavBarStatus
 }
 
 export interface IUser {
     phone: string,
-    password: string,
     token: string,
-    status: LoadStatus
 }
 
-export interface IBannerTypes {
-    status: LoadStatus,
-    bannerTypes: IBannerType[]
+export interface ILogin {
+    phone: string,
+    password: string,
+    remember: boolean
 }
+
+
 export interface IBannerType {
     id: number,
     type: string
-}
-
-export enum LoadStatus {
-    default = "default",
-    isLoading = "isLoading",
-    success = "success",
-    reject = "reject"
 }
 
 export enum NavBarStatus {
@@ -60,11 +52,6 @@ export enum NavBarStatus {
     isMenuOpen = "isMenuOpen",
     isEventOpen = "isEventOpen",
     isMoreOpen = "isMoreOpen"
-}
-
-export interface IProductState {
-    items: IMenuFetchData[];
-    status: LoadStatus; 
 }
 
 export interface IProductCart {
