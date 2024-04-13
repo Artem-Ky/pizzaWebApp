@@ -10,6 +10,10 @@ export const navigateSlice = createApi({
         baseUrl: 'https://localhost:7136/api/',
         prepareHeaders: (headers) => {
             headers.set('Content-Type', 'application/json');
+            const token = localStorage.getItem('token');
+            if (token) {
+              headers.set('Authorization', `Bearer ${token}`);
+            }
             return headers;
         }
     }),

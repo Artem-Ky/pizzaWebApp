@@ -1,17 +1,19 @@
-
 import RouterPages from "./routers";
 import './App.css'
+import useAuthCheck from "./customHooks/useAuthCheck";
+
 
 
 
 
 function App() {
+  useAuthCheck();
+
   return (
     <>
-        <RouterPages/>
+      <RouterPages />
     </>
-
   );
 }
 
-export default App
+export default App;

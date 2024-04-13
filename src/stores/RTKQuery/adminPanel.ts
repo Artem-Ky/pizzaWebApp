@@ -1,23 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IBannerType } from "../../types";
-
+import {baseQueryWithReauth} from "../baseQueryWithReauth"
 
 
 
 export const AdminPanel = createApi({
     reducerPath: 'AdminPanel',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'https://localhost:7136/api/',
-        prepareHeaders: (headers) => {
-            headers.set('Content-Type', 'application/json');
-            return headers;
-        },
-    }),
+    baseQuery: baseQueryWithReauth,
     tagTypes: ['bannerType'],
     endpoints: (builder) => ({
         fetchAllBannerTypes: builder.query<IBannerType[], void>({
             query: () => ({
-                url: `BannerType`
+                url: `BannerType/`
             }),
             providesTags: ['bannerType']
         }),

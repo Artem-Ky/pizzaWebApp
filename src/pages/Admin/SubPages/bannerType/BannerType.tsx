@@ -38,7 +38,6 @@ const [deleteBannerType, {}] = AdminPanel.useDeleteBannerTypeMutation();
       <button onClick={handleCreate}>
         Создать новый тип баннера
       </button>
-
       {bannerTypes?.map((item:IBannerType) => (
         <div key={item.id}>
           <p>ID: {item.id}</p>

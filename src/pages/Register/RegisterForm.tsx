@@ -3,9 +3,39 @@ import style from './registerForm.module.css'
 import { Link } from 'react-router-dom';
 import InputMask, { Props as InputMaskProps } from 'react-input-mask';
 import { useState } from 'react';
+import { useAppDispatch } from '../../customHooks/redux/redux';
+import { userSlice } from '../../stores/RTKQuery/users';
+import Cookies from 'universal-cookie';
+import { SetAuth, SetRoles, SetUser } from '../../stores/slices/userSlice/userSlice';
+
 const RegisterForm = () => {
+  
  // const MaskedInput: React.FC<InputMaskProps> = (props) => <InputMask {...props} />;
-  const [phone, setPhone] = useState('');
+ const [phoneNumber, setPhone] = useState('');
+ const [register, {} ] = userSlice.useRegisterUserMutation();
+ const dispatch = useAppDispatch();
+
+const onFinish = async (values: any) => {
+  const { password } = values;
+  console.log(phoneNumber);
+  console.log(password);
+  const phone = phoneNumber.replace(/\D/g, '');
+  const userResult = await register({phone, password}).unwrap()
+  const cookies = new Cookies();
+  cookies.set('refresh', userResult.refreshToken, { path: '/', maxAge: 365 * 24 * 60 * 60});
+  localStorage.setItem('token', userResult.token);
+
+  dispatch(SetAuth(true));
+  dispatch(SetUser(userResult));
+  const tokenParts = userResult.token?.split('.') as string[];
+  const tokenPayload = JSON.parse(atob(tokenParts[1]));
+  const roles = tokenPayload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+  dispatch(SetRoles(roles));
+  setPhone('');
+}
+
+
+
     const formItemLayout = {
         labelCol: {
           xs: {
@@ -40,6 +70,7 @@ const RegisterForm = () => {
     <main className={style.container}>
       <Form
         {...formItemLayout}
+        onFinish={onFinish}
         name="register"
         style={{
           maxWidth: 800,
@@ -59,7 +90,7 @@ const RegisterForm = () => {
           >
             <InputMask
              mask="8 (999) 999-99-99"
-              value={phone} // Использование состояния для value
+              value={phoneNumber} // Использование состояния для value
               onChange={(e) => setPhone(e.target.value)} // Обновление состояния при изменении
             >
               {(inputProps) => <Input {...inputProps} type="tel" />}

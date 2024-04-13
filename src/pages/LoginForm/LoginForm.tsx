@@ -1,28 +1,52 @@
 import { Form, Input, Button } from 'antd';
 import style from './LoginForm.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import InputMask, { Props as InputMaskProps } from 'react-input-mask';
 import { userSlice } from '../../stores/RTKQuery/users';
-import { SetUser } from '../../stores/slices/userSlice/userSlice';
-import { IUser } from '../../types';
+import { SetAuth, SetRoles, SetUser } from '../../stores/slices/userSlice/userSlice';
 import { useAppDispatch } from '../../customHooks/redux/redux';
+import Cookies from 'universal-cookie';
 const LoginForm = () => {
 
   const [login, {} ] = userSlice.useLoginUserMutation();
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate(); 
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
  const onFinish = async (values: any) => {
   try {
     const { phoneNumber, password } = values;
     const phone = phoneNumber.replace(/\D/g, '');
-    console.log (phone, password);
     const userResult = await login({phone, password, remember: true}).unwrap()
+    localStorage.setItem('token', userResult.token);
+
+    const cookies = new Cookies();
+    cookies.set('refresh', userResult.refreshToken, { path: '/', maxAge: 365 * 24 * 60 * 60});
+  
+
+    dispatch(SetAuth(true));
     dispatch(SetUser(userResult));
+
+
+    const tokenParts = userResult.token?.split('.') as string[];
+    const tokenPayload = JSON.parse(atob(tokenParts[1]));
+    const roles = tokenPayload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    dispatch(SetRoles(roles));
+    handleRedirect();
+
+
   } catch (error) {
     console.log(error)
   }
 };
+
+
+
+const handleRedirect = () => {
+  navigate(from, {replace: true});
+}
+
 
 
 

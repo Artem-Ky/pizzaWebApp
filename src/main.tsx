@@ -4,7 +4,7 @@ import {setupStore} from './stores/store.tsx'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
-const store = setupStore()
+export const store = setupStore()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>

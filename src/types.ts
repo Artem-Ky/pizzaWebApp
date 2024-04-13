@@ -30,15 +30,28 @@ export interface INavigationSlice {
     navBarStatus: NavBarStatus
 }
 
+
 export interface IUser {
     phone: string,
     token: string,
+    refreshToken: string,
+    isAuth: boolean,
+    roles: string[]
 }
+
+export interface ITokenResponse {
+    token: string;
+    refreshToken: string;
+  }
 
 export interface ILogin {
     phone: string,
     password: string,
     remember: boolean
+}
+export interface IRegister {
+    phone: string,
+    password: string,
 }
 
 

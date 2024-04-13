@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../../types"
-
+import {  IUser } from "../../../types"
+import Cookies from 'universal-cookie';
 
 
 const initialState: IUser = {
     phone:'',
-    token: ''
+    token: '',
+    refreshToken: '',
+    roles: [],
+    isAuth: false
 }
 
 
@@ -21,11 +24,24 @@ export const userSlice = createSlice({
         },
         SetPhone: (state, action: PayloadAction<string>) => {
             state.phone = action.payload;
+        },
+        SetAuth: (state, action: PayloadAction<boolean>) => {
+            state.isAuth = action.payload;
+        },
+        SetRoles: (state, action: PayloadAction<string[]>) => {
+            state.roles = action.payload;
+            console.log(state.roles);
+        },
+        logOut: (state) => {
+            state = initialState;
+            const cookies = new Cookies();
+            localStorage.removeItem('token');
+            cookies.remove('refresh');
         }
     }
 })
 
 
-export const {SetUser, SetPhone} = userSlice.actions;
+export const {SetUser, SetPhone, SetAuth, logOut, SetRoles} = userSlice.actions;
 
 export default userSlice.reducer
