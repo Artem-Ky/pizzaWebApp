@@ -22,3 +22,7 @@
 .blog__link-mb {
     margin-bottom: 11px;
 }
+
+.blog__links-second .item{
+    margin-right: 0;
+}

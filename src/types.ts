@@ -22,10 +22,29 @@ export interface IAnchorLinks {
     type: string
 }
 
+export interface ICartProduct {
+    id: number,
+    name: string,
+    cost: number,
+    count: number
+}
+
+export interface IOrderItem {
+    id: number,
+    count: number
+}
+
+export interface IOrder {
+    address: string,
+    orderItems: Array<IOrderItem>
+}
+
 export interface ICartState {
     amount: number,
-    totalPrice: number
+    totalPrice: number,
+    cartList: Array<ICartProduct>;
 }
+
 export interface INavigationSlice {
     navBarStatus: NavBarStatus
 }
@@ -49,6 +68,12 @@ export interface ILogin {
     password: string,
     remember: boolean
 }
+
+export interface ILoginDate {
+    phoneNumber: string,
+    password: string
+}
+
 export interface IRegister {
     phone: string,
     password: string,
@@ -68,6 +93,7 @@ export enum NavBarStatus {
 }
 
 export interface IProductCart {
+    id: number,
     img: string,
     title: string,
     descr: string,

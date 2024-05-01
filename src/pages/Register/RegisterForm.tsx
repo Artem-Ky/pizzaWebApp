@@ -1,24 +1,23 @@
 import { Form, Input, Button, Checkbox  } from 'antd';
 import style from './registerForm.module.css'
 import { Link } from 'react-router-dom';
-import InputMask, { Props as InputMaskProps } from 'react-input-mask';
+import InputMask from 'react-input-mask';
 import { useState } from 'react';
 import { useAppDispatch } from '../../customHooks/redux/redux';
 import { userSlice } from '../../stores/RTKQuery/users';
 import Cookies from 'universal-cookie';
 import { SetAuth, SetRoles, SetUser } from '../../stores/slices/userSlice/userSlice';
+import { ILoginDate } from '../../types';
 
 const RegisterForm = () => {
   
  // const MaskedInput: React.FC<InputMaskProps> = (props) => <InputMask {...props} />;
  const [phoneNumber, setPhone] = useState('');
- const [register, {} ] = userSlice.useRegisterUserMutation();
+ const [register ] = userSlice.useRegisterUserMutation();
  const dispatch = useAppDispatch();
 
-const onFinish = async (values: any) => {
+const onFinish = async (values: ILoginDate) => {
   const { password } = values;
-  console.log(phoneNumber);
-  console.log(password);
   const phone = phoneNumber.replace(/\D/g, '');
   const userResult = await register({phone, password}).unwrap()
   const cookies = new Cookies();
@@ -93,6 +92,7 @@ const onFinish = async (values: any) => {
               value={phoneNumber} // Использование состояния для value
               onChange={(e) => setPhone(e.target.value)} // Обновление состояния при изменении
             >
+              {/* @ts-ignore */}
               {(inputProps) => <Input {...inputProps} type="tel" />}
             </InputMask>
           </Form.Item>

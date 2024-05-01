@@ -1,9 +1,23 @@
 import { useInView } from "react-intersection-observer"
-import { IProductCart } from "../../../types";
+import { IProductCart, ICartProduct } from "../../../types";
+import { useAppDispatch } from "../../../customHooks/redux/redux";
+import { addToCart } from "../../../stores/slices/cartSlice/cartSlice";
 
 
 
-const ProductCart: React.FC<IProductCart> = ({img, title, descr, cost}) => {
+const ProductCart: React.FC<IProductCart> = ({id, img, title, descr, cost}) => {
+
+    const dispatch = useAppDispatch();
+
+    const onClickAdd = () => {
+        const item: ICartProduct = {
+          id,
+          name: title,
+          cost,
+          count: 1,
+        };
+        dispatch(addToCart(item));
+      };
 
     const {ref, inView} = useInView({
         threshold: 0,
@@ -28,7 +42,7 @@ const ProductCart: React.FC<IProductCart> = ({img, title, descr, cost}) => {
         </div>
         <div className="product-card__order-panel">
             <span className="order-panel__cost">{`от ${cost}`}</span>
-            <a className="order-panel__btn" href="">Выбрать</a>
+            <a onClick={onClickAdd} className="order-panel__btn">Выбрать</a>
         </div>
     </article>
   )

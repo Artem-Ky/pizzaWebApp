@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import cartReduce from './slices/cartSlice/cartSlice'
 import userReduce from './slices/userSlice/userSlice'
 import { ProductSlice } from "./RTKQuery/product";
+import { orderSlice } from "./RTKQuery/cart";
 import { navigateSlice } from "./RTKQuery/navigate";
 import navigationReduce from "./slices/navigateSlice/navigateSlice";
 import { AdminPanel } from "./RTKQuery/adminPanel";
@@ -18,14 +19,15 @@ const rootReducer = combineReducers ({
     [AdminPanel.reducerPath]: AdminPanel.reducer,
     [ProductSlice.reducerPath]: ProductSlice.reducer,
     [navigateSlice.reducerPath]: navigateSlice.reducer,
-    [userSlice.reducerPath]: userSlice.reducer
+    [userSlice.reducerPath]: userSlice.reducer,
+    [orderSlice.reducerPath]: orderSlice.reducer
 })
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(AdminPanel.middleware).concat(ProductSlice.middleware)
-        .concat(navigateSlice.middleware).concat(userSlice.middleware),
+        .concat(navigateSlice.middleware).concat(userSlice.middleware).concat(orderSlice.middleware),
     })
 }
 

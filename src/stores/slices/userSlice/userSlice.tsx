@@ -33,7 +33,11 @@ export const userSlice = createSlice({
             console.log(state.roles);
         },
         logOut: (state) => {
-            state = initialState;
+            state.isAuth = false;
+            state.phone = '';
+            state.refreshToken = '';
+            state.roles = [];
+            state.token = '';
             const cookies = new Cookies();
             localStorage.removeItem('token');
             cookies.remove('refresh');

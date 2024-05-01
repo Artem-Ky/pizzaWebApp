@@ -1,20 +1,21 @@
 import { Form, Input, Button } from 'antd';
 import style from './LoginForm.module.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import InputMask, { Props as InputMaskProps } from 'react-input-mask';
+import InputMask from 'react-input-mask';
 import { userSlice } from '../../stores/RTKQuery/users';
 import { SetAuth, SetRoles, SetUser } from '../../stores/slices/userSlice/userSlice';
 import { useAppDispatch } from '../../customHooks/redux/redux';
 import Cookies from 'universal-cookie';
+import { ILoginDate } from '../../types';
 const LoginForm = () => {
 
-  const [login, {} ] = userSlice.useLoginUserMutation();
+  const [login ] = userSlice.useLoginUserMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate(); 
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
 
- const onFinish = async (values: any) => {
+ const onFinish = async (values: ILoginDate) => {
   try {
     const { phoneNumber, password } = values;
     const phone = phoneNumber.replace(/\D/g, '');
@@ -106,6 +107,7 @@ const handleRedirect = () => {
             <InputMask
              mask="8 (999) 999-99-99"
             >
+              {/* @ts-ignore */}
               {(inputProps) => <Input {...inputProps} type="tel" />}
             </InputMask>
           </Form.Item>

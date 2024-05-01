@@ -20,13 +20,13 @@ const NavBlock: React.FC<IFooterBlog> = ({title,secondLinks, firstLinks, sizeCla
           ))}
         </ul>
         {secondLinks?.length > 0 && (
-          <ul className={`blog__links`}>
+          <ul className={`blog__links blog__links-second`}>
             {secondLinks?.map((secondLinks) => (
               <Link
                 key={`second-${secondLinks.id}`}
                 url={secondLinks.url}
                 title={secondLinks.title}
-                linkClass={secondLinks.linkClass + ' blog__link-mb'}
+                linkClass={secondLinks.linkClass + ' blog__link-mb '}
               />
             ))}
           </ul>

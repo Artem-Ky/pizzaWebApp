@@ -10,9 +10,9 @@ const BannerType = () => {
 
 
 const {data: bannerTypes} = AdminPanel.useFetchAllBannerTypesQuery();
-const [createBannerType, {} ] = AdminPanel.useCreateBannerTypeMutation();
-const [updateBannerType, {}] = AdminPanel.useUpdateBannerTypeMutation();
-const [deleteBannerType, {}] = AdminPanel.useDeleteBannerTypeMutation();
+const [createBannerType] = AdminPanel.useCreateBannerTypeMutation();
+const [updateBannerType] = AdminPanel.useUpdateBannerTypeMutation();
+const [deleteBannerType] = AdminPanel.useDeleteBannerTypeMutation();
 
 
   const handleCreate = async () => {
@@ -24,6 +24,7 @@ const [deleteBannerType, {}] = AdminPanel.useDeleteBannerTypeMutation();
     await updateBannerType({id, type} as IBannerType)
   };
   const handleDelete= async (id: number) => {
+    console.log(id);
     await deleteBannerType(id)
   };
 

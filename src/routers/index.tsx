@@ -7,6 +7,7 @@ import LoginForm from "../pages/LoginForm/LoginForm";
 import BannerType from "../pages/Admin/SubPages/bannerType/BannerType";
 import Profile from "../pages/Profile/Profile";
 import RequireAuth from "../pages/Shared/RequireAuth";
+import Cart from "../pages/Cart/Cart";
 
 
 const RouterPages = () => {
@@ -22,6 +23,7 @@ const RouterPages = () => {
               </Route>
               <Route path="/" element={<RequireAuth allowRoles={["User", "Admin"]}/>}>
                   <Route path="profile" element={<Profile/>}/>
+                  <Route path="cart" element={<Cart/>}/>
                   <Route path="*" element={<NotFound/>}/>
               </Route>
               <Route path="/admin" element={<RequireAuth allowRoles={["Admin"]}/>}>

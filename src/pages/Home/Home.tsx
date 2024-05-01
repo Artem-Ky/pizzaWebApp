@@ -1,4 +1,4 @@
-import ProductBlog from "./Components/ProductContent"
+import ProductContent from "./Components/ProductContent"
 
 
 
@@ -7,7 +7,7 @@ const Home = () => {
 
   return (
     <>      
-        <ProductBlog/>
+        <ProductContent/>
     </>
   )
 }
